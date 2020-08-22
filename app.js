@@ -37,5 +37,7 @@ new Image('wine-glass','./images/wine-glass.jpg');
 console.log(imageArray);
 
 function postImages (){
-
+  imgElOne.src = imageArray[0].src;
+  imgElTwo.src = imageArray[1].src;
+  imgElThree.src = imageArray[2].src;
 }
