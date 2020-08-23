@@ -10,7 +10,6 @@ function Image(name, src){
   this.clicked = 0;
   this.src= src;
   this.name = name;
-
   imageArray.push(this)
 }
 
@@ -31,13 +30,34 @@ new Image('shark','./images/shark.jpg');
 new Image('sweep','./images/sweep.jpg');
 new Image('tauntaun','./images/tauntaun.jpg');
 new Image('unicorn','./images/unicorn.jpg');
-new Image('usb','./images/usb.jpg');
+new Image('usb','./images/usb.gif');
 new Image('water-can','./images/water-can.jpg');
 new Image('wine-glass','./images/wine-glass.jpg');
-console.log(imageArray);
+// console.log(imageArray);
 
 function postImages (){
-  imgElOne.src = imageArray[0].src;
-  imgElTwo.src = imageArray[1].src;
-  imgElThree.src = imageArray[2].src;
+  // var imgOne = imageArray[getNumber(imageArray.length)];
+  // var imgTwo = imageArray[getNumber(imageArray.length)];
+  // var imgThree = imageArray[getNumber(imageArray.length)];
+
+  imgElOne.src = imageArray[getNumber(imageArray.length)].src;
+  imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
+  imgElThree.src = imageArray[getNumber(imageArray.length)].src;
+
+  while (imgElOne.src === imgElTwo){
+    imgElTwo + imageArray[getNumber(imageArray.length)].src;
+  }
+  while (imgElOne.src === imgElThree){
+    imgElThree + imageArray[getNumber(imageArray.length)].src;
+  }
+  while (imgElTwo.src === imgElOne){
+    imgElOne + imageArray[getNumber(imageArray.length)].src;
+  }
+
 }
+
+function getNumber(max){
+  return Math.floor(Math.random() * max)
+} 
+
+postImages();
