@@ -3,7 +3,7 @@
 var imageArray = [];
 var imgElOne = document.getElementById("image-one")
 var imgElTwo = document.getElementById("image-two")
-var imgElThree = document.getElementById("image-three")
+// var imgElThree = document.getElementById("image-three")
 
 function Image(name, src){
   this.viewed = 0;
@@ -42,18 +42,32 @@ function postImages (){
 
   imgElOne.src = imageArray[getNumber(imageArray.length)].src;
   imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
-  imgElThree.src = imageArray[getNumber(imageArray.length)].src;
+  // imgElThree.src = imageArray[getNumber(imageArray.length)].src;
+
+  console.log(imgElOne.src);
+  console.log(imgElTwo.src);
+  // console.log(imgElThree.src);
 
   while (imgElOne.src === imgElTwo){
     imgElTwo + imageArray[getNumber(imageArray.length)].src;
   }
-  while (imgElOne.src === imgElThree){
-    imgElThree + imageArray[getNumber(imageArray.length)].src;
-  }
-  while (imgElTwo.src === imgElOne){
-    imgElOne + imageArray[getNumber(imageArray.length)].src;
-  }
+  // while (imgElTwo.src === imgElThree){
+  //   imgElThree + imageArray[getNumber(imageArray.length)].src;
+  // }
+  // while (imgElThree.src === imgElOne){
+  //   imgElOne + imageArray[getNumber(imageArray.length)].src;
+  // }
+  imgElOne.src = imgElOne.src;
+  imgElTwo.src = imgElTwo.src;
+  // imgElThree.src = imgElThree.src;
 
+  imgElOne.alt = imgElOne.name;
+  imgElTwo.alt = imgElTwo.name;
+  // imgElThree.atl = imgElThree.name;
+
+  imgOne.viewed++;
+  imgTwo.viewed++;
+  // imgThree.viewed++;
 }
 
 function getNumber(max){
