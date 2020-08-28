@@ -48,22 +48,23 @@ function postImages (){
   console.log(imgElTwo.src);
   console.log(imgElThree.src);
 
-  while (imgElOne.src === imgElTwo){
+  while (imgElOne.src === imgElTwo.src){
     imgElTwo + imageArray[getNumber(imageArray.length)].src;
   }
-  while (imgElTwo.src === imgElThree){
+  while (imgElTwo.src === imgElThree.src){
+    imgElTwo + imageArray[getNumber(imageArray.length)].src;
+  }
+  while (imgElThree.src === imgElOne.src){
     imgElThree + imageArray[getNumber(imageArray.length)].src;
   }
-  while (imgElThree.src === imgElOne){
-    imgElOne + imageArray[getNumber(imageArray.length)].src;
-  }
-  imgElOne.src = imgElOne.src;
-  imgElTwo.src = imgElTwo.src;
-  imgElThree.src = imgElThree.src;
 
-  imgElOne.alt = imgElOne.name;
-  imgElTwo.alt = imgElTwo.name;
-  imgElThree.atl = imgElThree.name;
+  // imgElOne.src = imgElOne.src;
+  // imgElTwo.src = imgElTwo.src;
+  // imgElThree.src = imgElThree.src;
+
+  // imgElOne.alt = imgElOne.name;
+  // imgElTwo.alt = imgElTwo.name;
+  // imgElThree.atl = imgElThree.name;
 
   imgOne.viewed++;
   imgTwo.viewed++;
@@ -75,3 +76,4 @@ function getNumber(max){
 } 
 
 postImages();
+// console.log(imgOne.viewed)
