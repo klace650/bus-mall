@@ -5,14 +5,7 @@ var imgElOne = document.getElementById("image-one")
 var imgElTwo = document.getElementById("image-two")
 var imgElThree = document.getElementById("image-three")
 
-function Image(name, src){
-  this.viewed = 0;
-  this.clicked = 0;
-  this.src= src;
-  this.name = name;
-  imageArray.push(this)
-}
-
+// Image inputs //
 new Image('bag','./images/bag.jpg');
 new Image('banana','./images/banana.jpg');
 new Image('bathroom','./images/bathroom.jpg');
@@ -33,8 +26,14 @@ new Image('unicorn','./images/unicorn.jpg');
 new Image('usb','./images/usb.gif');
 new Image('water-can','./images/water-can.jpg');
 new Image('wine-glass','./images/wine-glass.jpg');
-// console.log(imageArray);
-
+// Image Constructor //
+function Image(name, src){
+  this.viewed = 0;
+  this.clicked = 0;
+  this.src= src;
+  this.name = name;
+  imageArray.push(this)
+}
 function postImages (){
   var imgOne = imageArray[getNumber(imageArray.length)];
   var imgTwo = imageArray[getNumber(imageArray.length)];
@@ -58,22 +57,21 @@ function postImages (){
     imgElThree + imageArray[getNumber(imageArray.length)].src;
   }
 
-  // imgElOne.src = imgElOne.src;
-  // imgElTwo.src = imgElTwo.src;
-  // imgElThree.src = imgElThree.src;
+  imgElOne.src = imgElOne.src;
+  imgElTwo.src = imgElTwo.src;
+  imgElThree.src = imgElThree.src;
 
-  // imgElOne.alt = imgElOne.name;
-  // imgElTwo.alt = imgElTwo.name;
-  // imgElThree.atl = imgElThree.name;
+  imgElOne.alt = imgElOne.name;
+  imgElTwo.alt = imgElTwo.name;
+  imgElThree.atl = imgElThree.name;
 
   imgOne.viewed++;
   imgTwo.viewed++;
   imgThree.viewed++;
 }
-
 function getNumber(max){
   return Math.floor(Math.random() * max)
 } 
-
 postImages();
-// console.log(imgOne.viewed)
+//// Above posts images to page ///
+
