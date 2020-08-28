@@ -1,5 +1,6 @@
 'use strict';
-
+var totalClicks = [];
+var trials = 25;
 var imageArray = [];
 var imgElOne = document.getElementById("image-one");
 var imgElTwo = document.getElementById("image-two");
@@ -47,12 +48,6 @@ function postImages (){
   while (imgElOne.src === imgElTwo.src === imgElThree.src){
     imgElTwo + imageArray[getNumber(imageArray.length)].src;
   }
-  // while (imgElTwo.src === imgElThree.src){
-  //   imgElTwo + imageArray[getNumber(imageArray.length)].src;
-  // }
-  // while (imgElThree.src === imgElOne.src){
-  //   imgElThree + imageArray[getNumber(imageArray.length)].src;
-  // }
   
   imgElOne.src = imgOne.src;
   imgElTwo.src = imgTwo.src;
@@ -72,12 +67,12 @@ function postImages (){
 function getNumber(max){
   return Math.floor(Math.random() * max);
 } 
-// debugger;
+
 // Above posts images to page ///
 imgElOne.addEventListener('click', eventHandler);
 imgElTwo.addEventListener('click', eventHandler);
 imgElThree.addEventListener('click', eventHandler); 
-
+  
 function eventHandler(e){
   for (var i = 0; i < imageArray.length; i++){
     if (imageArray[i].name === e.target.alt){
@@ -86,5 +81,6 @@ function eventHandler(e){
     }
   }
 }
-
+  
+  
 postImages();
