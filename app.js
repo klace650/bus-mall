@@ -5,6 +5,7 @@ var imgElOne = document.getElementById("image-one")
 var imgElTwo = document.getElementById("image-two")
 var imgElThree = document.getElementById("image-three")
 
+
 // Image inputs //
 new Image('bag','./images/bag.jpg');
 new Image('banana','./images/banana.jpg');
@@ -38,11 +39,11 @@ function postImages (){
   var imgOne = imageArray[getNumber(imageArray.length)];
   var imgTwo = imageArray[getNumber(imageArray.length)];
   var imgThree = imageArray[getNumber(imageArray.length)];
-
+  
   imgElOne.src = imageArray[getNumber(imageArray.length)].src;
   imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
   imgElThree.src = imageArray[getNumber(imageArray.length)].src;
-
+  
   while (imgElOne.src === imgElTwo.src){
     imgElTwo + imageArray[getNumber(imageArray.length)].src;
   }
@@ -52,19 +53,22 @@ function postImages (){
   while (imgElThree.src === imgElOne.src){
     imgElThree + imageArray[getNumber(imageArray.length)].src;
   }
-
+  
   imgElOne.src = imgOne.src;
   imgElTwo.src = imgTwo.src;
   imgElThree.src = imgThree.src;
-
+  
   imgElOne.alt = imgOne.name;
   imgElTwo.alt = imgTwo.name;
   imgElThree.alt = imgThree.name;
-
+  
   imgOne.viewed++;
   imgTwo.viewed++;
   imgThree.viewed++;
 }
+
+console.log(imageArray)
+
 function getNumber(max){
   return Math.floor(Math.random() * max)
 } 
@@ -74,6 +78,12 @@ imgElTwo.addEventListener('click', eventHandler);
 imgElThree.addEventListener('click', eventHandler); 
 
 function eventHandler(e){
-  console.log(e.target.alt)
+  for (var i = 0; i < imageArray.length; i++){
+    if (imageArray[i].name === e.target.alt){
+      imageArray[i].clicked++;
+      postImages();
+    }
+  }
 }
+
 postImages();
