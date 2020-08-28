@@ -43,10 +43,6 @@ function postImages (){
   imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
   imgElThree.src = imageArray[getNumber(imageArray.length)].src;
 
-  console.log(imgElOne.src);
-  console.log(imgElTwo.src);
-  console.log(imgElThree.src);
-
   while (imgElOne.src === imgElTwo.src){
     imgElTwo + imageArray[getNumber(imageArray.length)].src;
   }
@@ -57,13 +53,13 @@ function postImages (){
     imgElThree + imageArray[getNumber(imageArray.length)].src;
   }
 
-  imgElOne.src = imgElOne.src;
-  imgElTwo.src = imgElTwo.src;
-  imgElThree.src = imgElThree.src;
+  imgElOne.src = imgOne.src;
+  imgElTwo.src = imgTwo.src;
+  imgElThree.src = imgThree.src;
 
-  imgElOne.alt = imgElOne.name;
-  imgElTwo.alt = imgElTwo.name;
-  imgElThree.atl = imgElThree.name;
+  imgElOne.alt = imgOne.name;
+  imgElTwo.alt = imgTwo.name;
+  imgElThree.alt = imgThree.name;
 
   imgOne.viewed++;
   imgTwo.viewed++;
@@ -72,6 +68,12 @@ function postImages (){
 function getNumber(max){
   return Math.floor(Math.random() * max)
 } 
-postImages();
 //// Above posts images to page ///
+imgElOne.addEventListener('click', eventHandler);
+imgElTwo.addEventListener('click', eventHandler);
+imgElThree.addEventListener('click', eventHandler); 
 
+function eventHandler(e){
+  console.log(e.target.alt)
+}
+postImages();
