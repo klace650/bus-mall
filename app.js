@@ -7,6 +7,7 @@ var imgElTwo = document.getElementById("image-two");
 var imgElThree = document.getElementById("image-three");
 
 
+
 // Image inputs //
 new Image('bag','./images/bag.jpg');
 new Image('banana','./images/banana.jpg');
@@ -28,6 +29,9 @@ new Image('unicorn','./images/unicorn.jpg');
 new Image('usb','./images/usb.gif');
 new Image('water-can','./images/water-can.jpg');
 new Image('wine-glass','./images/wine-glass.jpg');
+
+
+
 // Image Constructor //
 function Image(name, src){
   this.viewed = 0;
@@ -36,19 +40,33 @@ function Image(name, src){
   this.name = name;
   imageArray.push(this);
 }
+
+function getNumber(max){
+  return Math.floor(Math.random() * max);
+} 
+
 function postImages (){
   var imgOne = imageArray[getNumber(imageArray.length)];
   var imgTwo = imageArray[getNumber(imageArray.length)];
   var imgThree = imageArray[getNumber(imageArray.length)];
-  
-  imgElOne.src = imageArray[getNumber(imageArray.length)].src;
-  imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
-  imgElThree.src = imageArray[getNumber(imageArray.length)].src;
-  
-  while (imgElOne.src === imgElTwo.src === imgElThree.src){
-    imgElTwo + imageArray[getNumber(imageArray.length)].src;
+
+  while (imgOne === imgTwo){
+    imgTwo = imageArray[getNumber(imageArray.length)];
   }
-  
+  while (imgTwo === imgThree){
+    imgThree = imageArray[getNumber(imageArray.length)];
+  }
+  while (imgThree === imgOne){
+    imgOne = imageArray[getNumber(imageArray.length)];
+  }
+
+  imgElOne.src = imageArray[getNumber(imageArray.length)].src;
+    console.log(imgElOne)
+  imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
+    console.log(imgElTwo)
+  imgElThree.src = imageArray[getNumber(imageArray.length)].src;
+    console.log(imgElThree)
+ 
   imgElOne.src = imgOne.src;
   imgElTwo.src = imgTwo.src;
   imgElThree.src = imgThree.src;
@@ -60,13 +78,9 @@ function postImages (){
   imgOne.viewed++;
   imgTwo.viewed++;
   imgThree.viewed++;
+
 }
 
-// console.log(imageArray);
-
-function getNumber(max){
-  return Math.floor(Math.random() * max);
-} 
 
 // Above posts images to page ///
 imgElOne.addEventListener('click', eventHandler);
