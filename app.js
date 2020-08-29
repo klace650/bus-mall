@@ -1,9 +1,11 @@
-'use strict'
-
+'use strict';
+var totalClicks = [];
+var trials = 25;
 var imageArray = [];
-var imgElOne = document.getElementById("image-one")
-var imgElTwo = document.getElementById("image-two")
-var imgElThree = document.getElementById("image-three")
+var imgElOne = document.getElementById("image-one");
+var imgElTwo = document.getElementById("image-two");
+var imgElThree = document.getElementById("image-three");
+
 
 
 // Image inputs //
@@ -27,33 +29,44 @@ new Image('unicorn','./images/unicorn.jpg');
 new Image('usb','./images/usb.gif');
 new Image('water-can','./images/water-can.jpg');
 new Image('wine-glass','./images/wine-glass.jpg');
+
+
+
 // Image Constructor //
 function Image(name, src){
   this.viewed = 0;
   this.clicked = 0;
   this.src= src;
   this.name = name;
-  imageArray.push(this)
+  imageArray.push(this);
 }
+
+function getNumber(max){
+  return Math.floor(Math.random() * max);
+} 
+
 function postImages (){
   var imgOne = imageArray[getNumber(imageArray.length)];
   var imgTwo = imageArray[getNumber(imageArray.length)];
   var imgThree = imageArray[getNumber(imageArray.length)];
-  
+
+  while (imgOne === imgTwo){
+    imgTwo = imageArray[getNumber(imageArray.length)];
+  }
+  while (imgTwo === imgThree){
+    imgThree = imageArray[getNumber(imageArray.length)];
+  }
+  while (imgThree === imgOne){
+    imgOne = imageArray[getNumber(imageArray.length)];
+  }
+
   imgElOne.src = imageArray[getNumber(imageArray.length)].src;
+    console.log(imgElOne)
   imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
+    console.log(imgElTwo)
   imgElThree.src = imageArray[getNumber(imageArray.length)].src;
-  
-  while (imgElOne.src === imgElTwo.src){
-    imgElTwo + imageArray[getNumber(imageArray.length)].src;
-  }
-  while (imgElTwo.src === imgElThree.src){
-    imgElTwo + imageArray[getNumber(imageArray.length)].src;
-  }
-  while (imgElThree.src === imgElOne.src){
-    imgElThree + imageArray[getNumber(imageArray.length)].src;
-  }
-  
+    console.log(imgElThree)
+ 
   imgElOne.src = imgOne.src;
   imgElTwo.src = imgTwo.src;
   imgElThree.src = imgThree.src;
@@ -65,18 +78,15 @@ function postImages (){
   imgOne.viewed++;
   imgTwo.viewed++;
   imgThree.viewed++;
+
 }
 
-console.log(imageArray)
 
-function getNumber(max){
-  return Math.floor(Math.random() * max)
-} 
-//// Above posts images to page ///
+// Above posts images to page ///
 imgElOne.addEventListener('click', eventHandler);
 imgElTwo.addEventListener('click', eventHandler);
 imgElThree.addEventListener('click', eventHandler); 
-
+  
 function eventHandler(e){
   for (var i = 0; i < imageArray.length; i++){
     if (imageArray[i].name === e.target.alt){
@@ -85,5 +95,6 @@ function eventHandler(e){
     }
   }
 }
-
+  
+  
 postImages();
