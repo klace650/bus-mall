@@ -61,11 +61,9 @@ function postImages (){
   }
 
   imgElOne.src = imageArray[getNumber(imageArray.length)].src;
-    console.log(imgElOne)
   imgElTwo.src = imageArray[getNumber(imageArray.length)].src;
-    console.log(imgElTwo)
   imgElThree.src = imageArray[getNumber(imageArray.length)].src;
-    console.log(imgElThree)
+
  
   imgElOne.src = imgOne.src;
   imgElTwo.src = imgTwo.src;
@@ -81,6 +79,9 @@ function postImages (){
 
 }
 
+console.log(imageArray)
+
+postImages();
 
 // Above posts images to page ///
 imgElOne.addEventListener('click', eventHandler);
@@ -88,6 +89,7 @@ imgElTwo.addEventListener('click', eventHandler);
 imgElThree.addEventListener('click', eventHandler); 
   
 function eventHandler(e){
+  console.log(e.target.alt);
   for (var i = 0; i < imageArray.length; i++){
     if (imageArray[i].name === e.target.alt){
       imageArray[i].clicked++;
@@ -95,6 +97,9 @@ function eventHandler(e){
     }
   }
 }
-  
-  
-postImages();
+function tally (){
+  var clickCount = imageArray[0].clicked;
+}
+
+tally();
+console.log(imageArray.clicked);
