@@ -1,7 +1,9 @@
 'use strict';
-var totalClicks = [];
-var trials = 25;
+var clicks = 0;
+var allowedClicks = 25;
 var imageArray = [];
+var fullList = document.getElementById('list');
+
 var imgElOne = document.getElementById("image-one");
 var imgElTwo = document.getElementById("image-two");
 var imgElThree = document.getElementById("image-three");
@@ -78,28 +80,33 @@ function postImages (){
   imgThree.viewed++;
 
 }
-
-console.log(imageArray)
-
 postImages();
-
-// Above posts images to page ///
 imgElOne.addEventListener('click', eventHandler);
 imgElTwo.addEventListener('click', eventHandler);
 imgElThree.addEventListener('click', eventHandler); 
-  
+
+function renderList(){
+  for (var i = 0; i < imageArray.length; i++){
+    var liEl = document.createElement('li');
+    liEl.textContent = `${imageArray[i].name} Clicked: ${imageArray[i].clicked} Viewed: ${imageArray[i].viewed}`;
+    fullList.appendChild(liEl);
+  }
+}
+
 function eventHandler(e){
+  clicks++;
   console.log(e.target.alt);
   for (var i = 0; i < imageArray.length; i++){
     if (imageArray[i].name === e.target.alt){
       imageArray[i].clicked++;
-      postImages();
     }
   }
+  postImages();
+  if (clicks === allowedClicks){
+    imgElOne.removeEventListener('click', eventHandler);
+    imgElTwo.removeEventListener('click', eventHandler);
+    imgElThree.removeEventListener('click', eventHandler); 
+    renderList();
+  }
 }
-function tally (){
-  var clickCount = imageArray[0].clicked;
-}
-
-tally();
-console.log(imageArray.clicked);
+// console.log(imageArray)
